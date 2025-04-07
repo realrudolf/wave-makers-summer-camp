@@ -9,11 +9,11 @@ export default function RegistrationPath() {
 
   const handleDownloadPDF = () => {
     // Bezpośrednie pobieranie pliku PDF
-    window.open("/karta-kwalifikacyjna.pdf", "_blank")
+    window.open("/dokumenty-obozowe.pdf", "_blank")
 
     toast({
-      title: "Pobieranie karty kwalifikacyjnej",
-      description: "Karta kwalifikacyjna zostanie pobrana na Twoje urządzenie.",
+      title: "Pobieranie dokumentów obozowych",
+      description: "Karta kwalifikacyjna i regulamin obozu zostaną pobrane na Twoje urządzenie.",
     })
   }
 
@@ -36,14 +36,14 @@ export default function RegistrationPath() {
               </div>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 md:ml-6 flex-grow transform transition-all duration-300 hover:shadow-xl">
-              <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">Pobierz kartę kwalifikacyjną</h3>
+              <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">Pobierz dokumenty obozowe</h3>
               <p className="text-gray-700 mb-3 md:mb-4 text-sm md:text-base">
-                Pobierz oficjalną kartę kwalifikacyjną uczestnika wypoczynku, wydrukuj ją i wypełnij odręcznie. Karta
-                musi być podpisana przez rodzica/opiekuna prawnego.
+                Pobierz oficjalną kartę kwalifikacyjną uczestnika wypoczynku oraz regulamin obozu, wydrukuj je i
+                wypełnij kartę odręcznie. Karta oraz regulamin muszą być podpisane przez rodzica/opiekuna prawnego.
               </p>
               <Button onClick={handleDownloadPDF} className="flex items-center gap-2 text-sm">
                 <Download className="h-4 w-4" />
-                Pobierz kartę kwalifikacyjną
+                Pobierz dokumenty obozowe
               </Button>
             </div>
           </div>
@@ -59,21 +59,26 @@ export default function RegistrationPath() {
               </div>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 md:ml-6 flex-grow transform transition-all duration-300 hover:shadow-xl">
-              <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">Wypełnij kartę</h3>
+              <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">
+                Wypełnij kartę i zapoznaj się z regulaminem
+              </h3>
               <p className="text-gray-700 mb-3 md:mb-4 text-sm md:text-base">
-                Wypełnij wszystkie wymagane pola w karcie kwalifikacyjnej. Zwróć szczególną uwagę na:
+                Wypełnij wszystkie wymagane pola w karcie kwalifikacyjnej. Dokładnie zapoznaj się z regulaminem obozu i
+                podpisz go. Zwróć szczególną uwagę na:
               </p>
               <ul className="list-disc list-inside text-gray-700 mb-3 md:mb-4 space-y-1 text-sm md:text-base">
                 <li>Dane osobowe dziecka</li>
                 <li>Dane kontaktowe rodziców/opiekunów</li>
                 <li>Informacje o stanie zdrowia dziecka</li>
-                <li>Podpis rodzica/opiekuna prawnego</li>
+                <li>Podpis rodzica/opiekuna prawnego na karcie kwalifikacyjnej</li>
+                <li>Podpis rodzica/opiekuna prawnego na regulaminie obozu</li>
+                <li>Zasady uczestnictwa w obozie opisane w regulaminie</li>
               </ul>
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 md:p-4 text-yellow-800 text-sm md:text-base">
                 <p className="font-medium">Ważne!</p>
                 <p className="text-sm">
-                  Dokładne wypełnienie karty jest niezbędne dla zapewnienia bezpieczeństwa Twojego dziecka podczas
-                  obozu.
+                  Dokładne wypełnienie karty i zapoznanie się z regulaminem jest niezbędne dla zapewnienia
+                  bezpieczeństwa Twojego dziecka podczas obozu.
                 </p>
               </div>
             </div>
@@ -91,10 +96,11 @@ export default function RegistrationPath() {
             </div>
             <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 md:ml-6 flex-grow transform transition-all duration-300 hover:shadow-xl">
               <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">
-                Zeskanuj lub zrób zdjęcie karty
+                Zeskanuj lub zrób zdjęcie dokumentów
               </h3>
               <p className="text-gray-700 mb-3 md:mb-4 text-sm md:text-base">
-                Po wypełnieniu i podpisaniu karty, zeskanuj ją lub zrób wyraźne zdjęcie każdej strony. Upewnij się, że:
+                Po wypełnieniu i podpisaniu karty oraz regulaminu, zeskanuj je lub zrób wyraźne zdjęcie każdej strony.
+                Upewnij się, że:
               </p>
               <ul className="list-disc list-inside text-gray-700 mb-3 md:mb-4 space-y-1 text-sm md:text-base">
                 <li>Cała treść jest dobrze widoczna</li>
@@ -118,9 +124,9 @@ export default function RegistrationPath() {
               </div>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 md:ml-6 flex-grow transform transition-all duration-300 hover:shadow-xl">
-              <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">Wyślij kartę e-mailem</h3>
+              <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-2 md:mb-3">Wyślij dokumenty e-mailem</h3>
               <p className="text-gray-700 mb-3 md:mb-4 text-sm md:text-base">
-                Wyślij wypełnioną kartę kwalifikacyjną na adres email:
+                Wyślij wypełnioną kartę kwalifikacyjną oraz podpisany regulamin na adres email:
               </p>
               <div className="bg-blue-50 p-3 md:p-4 rounded-lg border border-blue-200 mb-3 md:mb-4 flex flex-col md:flex-row md:items-center md:justify-between">
                 <div className="font-mono text-blue-700 font-medium text-sm md:text-base break-all">
@@ -148,9 +154,6 @@ export default function RegistrationPath() {
               </p>
               <p className="text-gray-700 mb-3 md:mb-4 text-sm md:text-base">
                 W treści e-maila podaj swój numer telefonu oraz ewentualne dodatkowe informacje lub pytania.
-              </p>
-              <p className="text-gray-700 text-sm md:text-base">
-                W treści emaila podaj swój numer telefonu oraz ewentualne dodatkowe informacje lub pytania.
               </p>
             </div>
           </div>
