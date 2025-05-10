@@ -1291,7 +1291,7 @@ export default function Home() {
           ></div>
         </section>
         <section className="pt-16 pb-24 bg-white relative overflow-hidden">
-          <div className="container px-4 md:px-6 relative z-10">
+          <div className="container px-4 md:px-6">
             <motion.div
               className="text-center mb-12 animate-on-scroll"
               initial="hidden"
@@ -1431,6 +1431,10 @@ export default function Home() {
               <div className="bg-white text-gray-900 rounded-xl overflow-hidden shadow-2xl transform transition-transform hover:scale-105">
                 <div className="p-6 text-center">
                   <div className="text-5xl font-bold text-blue-700">2900 zł</div>
+                  <div className="mt-2 bg-blue-50 p-2 rounded-lg">
+                    <p className="text-blue-800 font-medium">Promocja: 2800 zł/os.</p>
+                    <p className="text-sm text-blue-600">przy zapisie 2 osób</p>
+                  </div>
                   <p className="mt-2 text-gray-600">Zapisy od 07.04.2025r.</p>
                   <div className="mt-4 text-blue-700 font-semibold">Zaliczka: 500zł</div>
                   <p className="mt-4 text-red-600 font-medium">
@@ -1765,4 +1769,3 @@ export default function Home() {
     </LazyMotion>
   )
 }
-
