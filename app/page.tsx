@@ -36,6 +36,7 @@ import {
   Building,
   TreePine,
   Moon,
+  UserCheck,
 } from "lucide-react"
 
 // Importuj dynamiczne komponenty
@@ -57,6 +58,7 @@ import { fadeInUpVariants, staggerContainerVariants, loadOptimizedFeatures } fro
 
 // Znajdź import useIsMobile
 import { useIsMobile } from "@/hooks/use-mobile"
+import InstructorCard from "@/components/instructor-card"
 
 // Zastąp motion.div LazyMotion w głównym komponencie
 export default function Home() {
@@ -69,6 +71,7 @@ export default function Home() {
   const contactRef = useRef<HTMLElement>(null)
   const missionRef = useRef<HTMLElement>(null)
   const accommodationRef = useRef<HTMLElement>(null)
+  const instructorsRef = useRef<HTMLElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   // Dodaj nowy ref dla sekcji rejestracji
   const registrationPathRef = useRef<HTMLElement>(null)
@@ -225,6 +228,32 @@ export default function Home() {
       description: "Ekscytująca zabawa w grupach, rozwijająca umiejętność współpracy i orientacji w terenie po zmroku",
       color: "bg-indigo-600",
       image: "/images/excursions/nocne-podchody.png",
+    },
+  ]
+
+  // Dane trenerów
+  const instructors = [
+    {
+      name: "Patryk Wachowiec",
+      role: "Trener i kierownik obozu",
+      phone: "602 323 099",
+      image: "/images/instructors/patryk-wachowiec.jpg",
+      bio: "Absolwent Akademii Wychowania Fizycznego w Warszawie, nauczyciel wychowania fizycznego i instruktor z wieloletnim doświadczeniem w pracy z dziećmi i młodzieżą. Posiada liczne kwalifikacje instruktorskie: pływania, windsurfingu, siłowni oraz trenera personalnego. Dodatkowo jest certyfikowanym ratownikiem wodnym, co zapewnia najwyższy poziom bezpieczeństwa podczas zajęć.",
+      specializations: ["Windsurfing", "SUP", "Gry i zabawy zespołowe", "Ratownictwo wodne", "Trening personalny"],
+    },
+    {
+      name: "Marcin Wasilczyk",
+      role: "Trener z pasją, instruktor pływania i koordynator zespołu ratowników",
+      phone: "",
+      image: "/images/instructors/marcin-wasilczyk.jpg",
+      bio: 'Związany ze sportem od najmłodszych lat. Marcin od 11 lat z zaangażowaniem prowadzi zajęcia jako instruktor pływania. Już w wieku 16 lat został ratownikiem wodnym, a od 5 lat pełni funkcję koordynatora zespołu ratowników i instruktorów na pływalni na warszawskim Mokotowie. Ukończył Akademię Wychowania Fizycznego w Warszawie na kierunku wychowanie fizyczne. Jego motto: „Wymagaj od siebie, żeby pokazać innym, że mogą osiągnąć wszystko."',
+      specializations: [
+        "Instruktor pływania",
+        "Ratownik wodny",
+        "Koordynator zespołu ratowników",
+        "Sporty wodne",
+        "Gry zespołowe",
+      ],
     },
   ]
 
@@ -466,6 +495,13 @@ export default function Home() {
                 Atrakcje
               </button>
               <button
+                onClick={() => scrollToSection(instructorsRef)}
+                className={`font-medium transition-colors ${scrollY > 50 ? "text-blue-700 hover:text-blue-900" : "text-white hover:text-blue-200"}`}
+                aria-label="Przejdź do sekcji Trenerzy"
+              >
+                Trenerzy
+              </button>
+              <button
                 onClick={() => scrollToSection(accommodationRef)}
                 className={`font-medium transition-colors ${scrollY > 50 ? "text-blue-700 hover:text-blue-900" : "text-white hover:text-blue-200"}`}
                 aria-label="Przejdź do sekcji Zakwaterowanie"
@@ -541,6 +577,16 @@ export default function Home() {
                   aria-label="Przejdź do sekcji Atrakcje"
                 >
                   Atrakcje
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection(instructorsRef)
+                    setMobileMenuOpen(false)
+                  }}
+                  className="font-medium text-blue-700 hover:text-blue-900 py-2 border-b border-gray-100"
+                  aria-label="Przejdź do sekcji Trenerzy"
+                >
+                  Trenerzy
                 </button>
                 <button
                   onClick={() => {
@@ -981,6 +1027,74 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+        </section>
+        {/* Instructors Section - NOWA SEKCJA */}
+        <section ref={instructorsRef} className="py-16 bg-blue-50 relative overflow-hidden">
+          <div
+            className="absolute top-0 left-0 w-full h-20 bg-white"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }}
+          ></div>
+
+          <div className="container px-4 md:px-6 relative z-10">
+            <motion.div
+              className="text-center mb-12 animate-on-scroll"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeInUpVariants}
+            >
+              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full mb-4">
+                <UserCheck className="h-4 w-4" aria-hidden="true" />
+                <span className="text-sm font-medium">Kadra</span>
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-blue-800">Poznaj naszych trenerów</h2>
+              <p className="text-gray-700 mt-2 max-w-2xl mx-auto">
+                Nasz zespół to doświadczeni trenerzy i wychowawcy, którzy z pasją dzielą się swoją wiedzą i
+                umiejętnościami. Każdy z nich ma bogate doświadczenie w pracy z dziećmi i młodzieżą.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="grid gap-8 md:grid-cols-2 max-w-6xl mx-auto"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={staggerContainerVariants}
+            >
+              {instructors.map((instructor, index) => (
+                <motion.div key={index} variants={fadeInUpVariants} className="animate-on-scroll">
+                  <InstructorCard instructor={instructor} />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="mt-12 text-center animate-on-scroll"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeInUpVariants}
+            >
+              <div className="bg-white rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <Shield className="h-8 w-8 text-blue-700" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-800">Bezpieczeństwo i doświadczenie</h3>
+                </div>
+                <p className="text-gray-700">
+                  Nasi trenerzy to pasjonaci sportu z wieloletnim doświadczeniem w pracy z dziećmi i młodzieżą.
+                  Posiadają odpowiednie kwalifikacje, certyfikaty oraz uprawnienia ratownicze, co zapewnia najwyższy
+                  poziom bezpieczeństwa podczas wszystkich zajęć.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div
+            className="absolute bottom-0 left-0 w-full h-20 bg-white"
+            style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%, 0 100%)" }}
+          ></div>
         </section>
         {/* Accommodation Section - NOWA SEKCJA */}
         <section ref={accommodationRef} className="py-16 md:py-24 bg-white relative overflow-hidden">
