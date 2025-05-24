@@ -24,13 +24,13 @@ export default function InstructorCard({ instructor }: InstructorCardProps) {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
       <div className="flex flex-col md:flex-row h-full">
-        {/* Zdjęcie - mniejsze, obok tekstu na większych ekranach */}
-        <div className="relative w-full h-48 md:w-2/5 md:h-auto bg-blue-50">
+        {/* Zwiększona wysokość na mobile i zmienione pozycjonowanie */}
+        <div className="relative w-full h-80 md:w-2/5 md:h-auto bg-blue-50">
           <Image
             src={instructor.image || "/placeholder.svg"}
             alt={instructor.name}
             fill
-            className="object-cover object-top"
+            className="object-cover object-[center_20%] md:object-top"
             loading="lazy"
             sizes="(max-width: 768px) 100vw, 40vw"
           />
